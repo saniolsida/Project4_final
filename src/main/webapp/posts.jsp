@@ -49,6 +49,7 @@
 	<th>Writer</th>
 	<th>Content</th>
 	<th>Regdate</th>
+	<th>Category</th>
 	<th>Edit</th>
 	<th>Delete</th>
 </tr>
@@ -59,6 +60,15 @@
 		<td>${u.getWriter()}</td>
 		<td>${u.getContent()}</td>
 		<td>${u.getRegdate()}</td>
+		<c:if test="${u.getCategory() eq '0'}">
+			<td> 공지 </td>
+		</c:if>
+		<c:if test="${u.getCategory() eq '1'}">
+			<td> 자유 </td>
+		</c:if>
+		<c:if test="${u.getCategory() eq '2'}">
+			<td> 문의 </td>
+		</c:if>
 		<td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>
 		<td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
 	</tr>

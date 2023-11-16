@@ -22,6 +22,14 @@
 <tr><td>Title:</td><td><input type="text" name="title" value="<%= u.getTitle()%>"/></td></tr>
 <tr><td>Writer:</td><td><input type="text" name="writer" value="<%= u.getWriter()%>" /></td></tr>
 <tr><td>Content:</td><td><textarea cols="50" rows="5" name="content"><%= u.getContent()%></textarea></td></tr>
+<tr><td>Category:</td>
+	<td>
+		<select id="category" name="category">
+			<option name="category" value="0" <%= u.getCategory() == 0 ? "selected" : "" %>>공지</option>
+			<option name="category" value="1" <%= u.getCategory() == 1 ? "selected" : "" %>>자유</option>
+			<option name="category" value="2" <%= u.getCategory() == 2 ? "selected" : "" %>>문의</option>
+		</select>
+	</td></tr>
 <tr><td colspan="2"><input type="submit" value="Edit Post"/>
 <input type="button" value="Cancel" onclick="history.back()"/></td></tr>
 </table>

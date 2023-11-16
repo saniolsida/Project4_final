@@ -14,7 +14,15 @@
 <tr><td>Title:</td><td><input type="text" name="title"/></td></tr>
 <tr><td>Writer:</td><td><input type="text" name="writer"/></td></tr>
 <tr><td>Content:</td><td><textarea cols="50" rows="5" name="content"></textarea></td></tr>
+<tr><td>Category:</td><td>
+    <select id="category" name="category">
+        <option name="category" value="0">공지</option>
+        <option name="category" value="1">자유</option>
+        <option name="category" value="2">문의</option>
+    </select>
+</td></tr>
 <tr><td><a href="posts.jsp">View All Records</a></td><td align="right"><input type="submit" value="Add Post"/></td></tr>
+
 </table>
 </form>
 
