@@ -10,7 +10,10 @@ public class BoardVO {
 	private Date regdate;
 	private int cnt;
 	private int category;
+	private int updates;
 
+	public int getUpdates() { return updates; }
+	public void setUpdates(int updates) { this.updates = updates; }
 	public int getCategory() { return category; }
 	public void setCategory(int category) { this.category = category; }
 	public BoardVO() {

@@ -7,27 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>free board</title>
-<style>
-#list {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-#list td, #list th {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align:center;
-}
-#list tr:nth-child(even){background-color: #f2f2f2;}
-#list tr:hover {background-color: #ddd;}
-#list th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #006bb3;
-  color: white;
-}
-</style>
+<link rel="stylesheet" href="BoardStyle.css"/>
 <script>
 	function delete_ok(id){
 		var a = confirm("정말로 삭제하겠습니까?");
@@ -44,31 +24,39 @@
 %>
 <table id="list" width="90%">
 <tr>
-	<th>Id</th>
+	<th>No</th>
 	<th>Title</th>
 	<th>Writer</th>
 	<th>Content</th>
 	<th>Regdate</th>
-	<th>Category</th>
+	<th>Updates</th>
 	<th>Edit</th>
 	<th>Delete</th>
 </tr>
 <c:forEach items="${list}" var="u">
 	<tr>
-		<td>${u.getSeq()}</td>
-		<td>${u.getTitle()}</td>
+		<c:choose>
+			<c:when test="${u.getCategory() eq '0'}">
+				<td> ${u.getSeq()} </td>
+			</c:when>
+			<c:when test="${u.getCategory() eq '1'}">
+				<td> 공지 </td>
+			</c:when>
+		</c:choose>
+		<td><a href="view.jsp?id=${u.getSeq()}">${u.getTitle()}</a></td>
 		<td>${u.getWriter()}</td>
 		<td>${u.getContent()}</td>
 		<td>${u.getRegdate()}</td>
-		<c:if test="${u.getCategory() eq '0'}">
-			<td> 공지 </td>
-		</c:if>
-		<c:if test="${u.getCategory() eq '1'}">
-			<td> 자유 </td>
-		</c:if>
-		<c:if test="${u.getCategory() eq '2'}">
-			<td> 문의 </td>
-		</c:if>
+
+		<c:choose>
+			<c:when test="${u.getUpdates() eq '0'}">
+				<td> 원본 </td>
+			</c:when>
+			<c:when test="${u.getUpdates() eq '1'}">
+				<td> ${u.getRegdate()} </td>
+			</c:when>
+		</c:choose>
+
 		<td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>
 		<td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
 	</tr>
