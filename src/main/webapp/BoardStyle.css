@@ -17,10 +17,23 @@
     background-color: #006bb3;
     color: white;
 }
+
 #board {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#board td, #board th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align:left;
+}
+#board tr:nth-child(even){background-color: #f2f2f2;}
+#board tr:hover {background-color: #ddd;}
+#board th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: center;
+    text-align: left;
     background-color: #006bb3;
     color: white;
 }

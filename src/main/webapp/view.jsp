@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit Form</title>
+    <title>View</title>
     <link rel="stylesheet" href="BoardStyle.css"/>
 </head>
 <body>
@@ -15,17 +15,20 @@
     String id=request.getParameter("id");
     BoardVO u=boardDAO.getBoard(Integer.parseInt(id));
 %>
-<board class="view-post">
-    <h2 class="display-5 link-body-emphasis mb-1"><%= u.getTitle()%></h2>
-    <p><%= u.getRegdate()%>
-    <a href="#"><%= u.getWriter()%></a>
-    </p>
-    <p>
-        <%= u.getContent()%>
-    </p>
-</board>
-<nav class="blog-pagination" aria-label="Pagination">
-    <a href="posts.jsp" class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Exit</a>
-</nav>
+<table id="board" width="90%">
+    <tr><td><h2 class="display-5 link-body-emphasis mb-1"><%= u.getTitle()%></h2></td></tr>
+    <tr>
+        <td>Reg date: <%= u.getRegdate()%>
+        <a>Writer: <%= u.getWriter()%></a></td>
+    </tr>
+    <tr>
+        <td>
+            <%= u.getContent()%>
+        </td>
+    </tr>
+    <tr>
+        <td><a href="posts.jsp" class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Exit</a></td>
+    </tr>
+</table>
 </body>
 </html>
